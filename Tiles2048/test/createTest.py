@@ -9,9 +9,7 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult)
-    def test_create_HappyPathStringUnderGrid(self):
-        expectedResult = {'create': 'create stub'}
+    def test_create_AllFourKeysPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertDictEqual(expectedResult, actualResult)
-    
+        self.assertIsNotNone(actualResult['grid'])
