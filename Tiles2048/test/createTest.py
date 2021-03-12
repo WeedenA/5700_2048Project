@@ -40,15 +40,15 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(userParms)
         lengthOfGrid = len(actualResult['grid'])
         self.assertEqual(expectedResult, len(actualResult['grid']))
-    def test_create_IntegrityIsValid(self):
-        expectedResult = 999999
-        userParms = {'op': 'create'}
-        actualResult = create._create(userParms)
-        # expected result depends on starting positions
-#    def test_create_StatusIsOk(self):
-#         expectedResult = 'ok'
+#     def test_create_IntegrityIsValid(self):
+#         expectedResult = 999999
 #         userParms = {'op': 'create'}
 #         actualResult = create._create(userParms)
-#         self.assertEqual(expectedResult, actualResult['status'])
+#         # expected result depends on starting positions
+    def test_create_StatusIsOk(self):
+         expectedResult = 'ok'
+         userParms = {'op': 'create'}
+         actualResult = create._create(userParms)
+         self.assertEqual(expectedResult, actualResult['status'])
     
         
