@@ -1,3 +1,3 @@
 def _create(userParms):
-    result = {'grid:', 'score:', 'Integrity:', 'status:'}
+    result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
     return result
