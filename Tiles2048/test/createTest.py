@@ -12,19 +12,19 @@ class CreateTest(unittest.TestCase):
     def test_create_GridKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertIsNone(actualResult['grid'])
+        self.assertIsNotNone(actualResult['grid'])
     def test_create_ScoredKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertIsNone(actualResult['score'])
+        self.assertIsNotNone(actualResult['score'])
     def test_create_IntegrityKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertIsNone(actualResult['Integrity'])
+        self.assertIsNotNone(actualResult['Integrity'])
     def test_create_StatusKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertIsNone(actualResult['status'])
+        self.assertIsNotNone(actualResult['status'])
 #     def test_create_GridContains2StartingTiles(self):
 #         expectedResult = 2
 #         userParms = {'op': 'create'}
