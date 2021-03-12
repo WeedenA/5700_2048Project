@@ -1,4 +1,4 @@
-import random.randint
+from random import random.randint
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
     result['grid'] = '0'
