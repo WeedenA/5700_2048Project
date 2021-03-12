@@ -30,7 +30,25 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         startingTiles = 0
-        for digit in actualResult:
+        for digit in actualResult['grid']:
             if digit == 2:
                 startingTiles += 1
         self.assertEqual(expectedResult, actualResult)
+    def test_create_GridStringIsCorrectLength(self):
+        expectedResult = 16
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        lengthOfGrid = len(actualResult['grid'])
+        self.assertEqual(expectedResult, actualResult)
+    def test_create_IntegrityIsValid(self):
+        expectedResult = 999999
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        # expected result depends on starting positions
+    def test_create_StatusIsOk(self):
+        expectedResult = 'ok'
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertEqual(expectedResult, actualResult['status'])
+    
+        
