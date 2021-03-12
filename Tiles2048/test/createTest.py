@@ -58,5 +58,5 @@ class CreateTest(unittest.TestCase):
         myHash = hashlib.sha256()
         myHash.update(hash.encode())
         expectedResult = myHash.hexdigest().upper()
-        self.AssertEqual(expectedResult, actualResult['Integrity'])
+        self.assertEqual(expectedResult, actualResult['Integrity'])
         
