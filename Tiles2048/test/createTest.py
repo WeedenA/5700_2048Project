@@ -45,7 +45,7 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         lengthOfGrid = len(actualResult['grid'])
-        self.assertEqual(expectedResult, len(actualResult['grid']))
+        self.assertEqual(expectedResult, lengthOfGrid)
     def test_create_StatusIsOk(self):
         expectedResult = 'ok'
         userParms = {'op': 'create'}
