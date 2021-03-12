@@ -33,7 +33,7 @@ class CreateTest(unittest.TestCase):
         for digit in actualResult['grid']:
             if digit == 2:
                 startingTiles += 1
-        self.assertEqual(expectedResult, actualResult)
+        self.assertEqual(expectedResult, startingTiles)
     def test_create_GridStringIsCorrectLength(self):
         expectedResult = 16
         userParms = {'op': 'create'}
