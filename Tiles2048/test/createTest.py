@@ -39,7 +39,7 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         lengthOfGrid = len(actualResult['grid'])
-        self.assertEqual(expectedResult, actualResult)
+        self.assertEqual(expectedResult, len(actualResult['grid']))
 #     def test_create_IntegrityIsValid(self):
 #         expectedResult = 999999
 #         userParms = {'op': 'create'}
