@@ -1,3 +1,9 @@
+'''
+Created on Mar 12, 2021
+Creates a starting grid for the game 2048
+Returns a dictionary representation of that grid
+@author: Alex Weeden
+'''
 import random
 import hashlib
 def _create(userParms):

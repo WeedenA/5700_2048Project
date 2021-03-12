@@ -1,7 +1,7 @@
 '''
 Created on Mar 12, 2021
 
-@author: Tsuits
+@author: Alex Weeden
 '''
  startingTiles = 0
     totalTiles = 0

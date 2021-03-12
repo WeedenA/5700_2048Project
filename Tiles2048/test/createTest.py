@@ -1,3 +1,8 @@
+'''
+Created on Mar 12, 2021
+
+@author: Alex Weeden
+'''
 import unittest
 import Tiles2048.create as create
 import hashlib
