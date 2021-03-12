@@ -34,12 +34,12 @@ class CreateTest(unittest.TestCase):
 #             if digit == 2:
 #                 startingTiles += 1
 #         self.assertEqual(expectedResult, actualResult)
-#     def test_create_GridStringIsCorrectLength(self):
-#         expectedResult = 16
-#         userParms = {'op': 'create'}
-#         actualResult = create._create(userParms)
-#         lengthOfGrid = len(actualResult['grid'])
-#         self.assertEqual(expectedResult, actualResult)
+    def test_create_GridStringIsCorrectLength(self):
+        expectedResult = 16
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        lengthOfGrid = len(actualResult['grid'])
+        self.assertEqual(expectedResult, actualResult)
 #     def test_create_IntegrityIsValid(self):
 #         expectedResult = 999999
 #         userParms = {'op': 'create'}
