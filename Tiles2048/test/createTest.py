@@ -1,5 +1,6 @@
 import unittest
 import Tiles2048.create as create
+import hashlib
 
 class CreateTest(unittest.TestCase):
 
@@ -40,11 +41,6 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(userParms)
         lengthOfGrid = len(actualResult['grid'])
         self.assertEqual(expectedResult, len(actualResult['grid']))
-#     def test_create_IntegrityIsValid(self):
-#         expectedResult = 999999
-#         userParms = {'op': 'create'}
-#         actualResult = create._create(userParms)
-#         # expected result depends on starting positions
     def test_create_StatusIsOk(self):
         expectedResult = 'ok'
         userParms = {'op': 'create'}
@@ -55,5 +51,12 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertEqual(expectedResult, actualResult['score'])
-     
+    def test_create_IntegrityIsValid(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        hash = actualResult['grid'] + '.' + str(actualResult['score'])
+        myHash = hashlib.sha256()
+        myHash.update(hash.encode())
+        expectedResult = myHash.hexdigest().upper()
+        self.AssertEqual(expectedResult, actualResult['Integrity'])
         

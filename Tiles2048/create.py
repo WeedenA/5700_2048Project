@@ -1,4 +1,5 @@
 import random
+import hashlib
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
     result['grid'] = '0'
