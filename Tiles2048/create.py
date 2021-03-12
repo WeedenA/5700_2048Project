@@ -11,18 +11,7 @@ def _create(userParms):
     result['score'] = '0'
     result['status'] = 'ok'
     
-    gridWidth = 4 # predetermined by game ruleset
-    gridHeight = 4 # predetermined by game ruleset
-    totalGridTiles = gridWidth * gridHeight
-    gameGridList = [0] * totalGridTiles
-    
-    firstRandomTile = random.randint(0,15)
-    secondRandomTile = random.randint(0,15) 
-    while (firstRandomTile == secondRandomTile):
-        secondRandomTile = random.randint(0,15)
-    gameGridList[firstRandomTile] = 2
-    gameGridList[secondRandomTile] = 2   
-      
+    gameGridList = establishBoard()
     gameGridString = buildGameGridString(gameGridList)
     result['grid'] = gameGridString
     
@@ -33,6 +22,21 @@ def _create(userParms):
     return result
 
 # code pulled from Assignment 4 Project Specs
+def establishBoard():
+    gridWidth = 4 # predetermined by game ruleset
+    gridHeight = 4 # predetermined by game ruleset
+    totalGridTiles = gridWidth * gridHeight
+    gameGridList = [0] * totalGridTiles
+    
+    firstRandomTile = random.randint(0,15)
+    secondRandomTile = random.randint(0,15) 
+    while (firstRandomTile == secondRandomTile):
+        secondRandomTile = random.randint(0,15)
+    gameGridList[firstRandomTile] = 2
+    gameGridList[secondRandomTile] = 2
+    
+    return gameGridList
+
 def digestHash(stringToHash):
     myHash = hashlib.sha256()
     myHash.update(stringToHash.encode())
