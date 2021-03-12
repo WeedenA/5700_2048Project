@@ -1,4 +1,4 @@
-from random import random
+import random
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
     result['grid'] = '0'
