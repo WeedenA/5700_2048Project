@@ -13,18 +13,18 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertIsNone(actualResult['grid'])
-#     def test_create_ScoredKeyPresent(self):
-#         userParms = {'op': 'create'}
-#         actualResult = create._create(userParms)
-#         self.assertIsNotNone(actualResult['score'])
-#     def test_create_IntegrityKeyPresent(self):
-#         userParms = {'op': 'create'}
-#         actualResult = create._create(userParms)
-#         self.assertIsNotNone(actualResult['Integrity'])
-#     def test_create_StatusKeyPresent(self):
-#         userParms = {'op': 'create'}
-#         actualResult = create._create(userParms)
-#         self.assertIsNotNone(actualResult['status'])
+    def test_create_ScoredKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNone(actualResult['score'])
+    def test_create_IntegrityKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNone(actualResult['Integrity'])
+    def test_create_StatusKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNone(actualResult['status'])
 #     def test_create_GridContains2StartingTiles(self):
 #         expectedResult = 2
 #         userParms = {'op': 'create'}
