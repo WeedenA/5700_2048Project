@@ -47,7 +47,7 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(userParms)
         self.assertEqual(expectedResult, actualResult['status'])
     def test_create_StartingScoreValid(self):
-        expectedResult =  0
+        expectedResult =  '0'
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertEqual(expectedResult, actualResult['score'])
