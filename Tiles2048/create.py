@@ -16,12 +16,9 @@ def _create(userParms):
     for value in gameGridList:
         gameGridString += str(value)
     result['grid'] = gameGridString
-    
-    
-    
-    
-    
     result['score'] = 0
+    result['status'] = 'ok'
+    
     result['Integrity'] = 'somehashthing'
-    result['status'] = 'pass/fail' 
+    
     return result
