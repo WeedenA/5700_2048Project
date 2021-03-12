@@ -1,3 +1,3 @@
 def _create(userParms):
-    result = {'grid': 'create stub'}
+    result = {'create': 'create stub'}
     return result
