@@ -31,7 +31,7 @@ class CreateTest(unittest.TestCase):
         actualResult = create._create(userParms)
         startingTiles = 0
         for digit in actualResult['grid']:
-            if digit == 2:
+            if digit == '2':
                 startingTiles += 1
         self.assertEqual(expectedResult, startingTiles)
     def test_create_GridStringIsCorrectLength(self):
