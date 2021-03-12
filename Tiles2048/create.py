@@ -2,7 +2,7 @@ import random
 import hashlib
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
-    result['score'] = 0
+    result['score'] = '0'
     result['status'] = 'ok'
     
     gridWidth = 4 # predetermined by game ruleset
