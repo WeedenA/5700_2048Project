@@ -25,3 +25,12 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult['status'])
+    def test_create_GridContains2StartingTiles(self):
+        expectedResult = 2
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        startingTiles = 0
+        for digit in actualResult:
+            if digit == 2:
+                startingTiles += 1
+        self.assertEqual(expectedResult, actualResult)
