@@ -21,9 +21,13 @@ def _create(userParms):
     result['status'] = 'ok'
     # program pulled from Assignment 4 Project Specs
     stringToHash = gameGridString + '.' + str(result['score'])
+    integrity = digestHash(stringToHash)
+    result['Integrity'] = integrity
+    
+    return result
+
+def digestHash(stringToHash):
     myHash = hashlib.sha256()
     myHash.update(stringToHash.encode())
     integrityScore = myHash.hexdigest().upper()
-    result['Integrity'] = integrityScore
-    
-    return result
+    return integrityScore
