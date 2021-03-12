@@ -9,7 +9,19 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult)
-    def test_create_AllFourKeysPresent(self):
+    def test_create_GridKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
         self.assertIsNotNone(actualResult['grid'])
+    def test_create_ScoredKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNotNone(actualResult['score'])
+    def test_create_IntegrityKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNotNone(actualResult['Integrity'])
+    def test_create_StatusKeyPresent(self):
+        userParms = {'op': 'create'}
+        actualResult = create._create(userParms)
+        self.assertIsNotNone(actualResult['status'])
