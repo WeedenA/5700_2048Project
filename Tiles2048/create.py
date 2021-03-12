@@ -23,9 +23,7 @@ def _create(userParms):
     gameGridList[firstRandomTile] = 2
     gameGridList[secondRandomTile] = 2   
       
-    gameGridString = ''
-    for value in gameGridList:
-        gameGridString += str(value)
+    gameGridString = buildGameGridString(gameGridList)
     result['grid'] = gameGridString
     
     stringToHash = gameGridString + '.' + str(result['score'])
@@ -40,3 +38,9 @@ def digestHash(stringToHash):
     myHash.update(stringToHash.encode())
     integrityScore = myHash.hexdigest().upper()
     return integrityScore
+
+def buildGameGridString(gameGridList):
+    gridString = ''
+    for value in gameGridList:
+        gridString += str(value)
+    return gridString
