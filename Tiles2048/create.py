@@ -7,7 +7,7 @@ def _create(userParms):
     startingGridList = [0] * totalGridTiles
     startingGridString = ''
     for value in startingGridList:
-        startingGridString += value
+        startingGridString += str(value)
     result['grid'] = startingGridString
     result['score'] = 0
     result['Integrity'] = 'somehashthing'
