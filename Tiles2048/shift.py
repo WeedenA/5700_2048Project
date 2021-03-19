@@ -19,7 +19,7 @@ def _shift(userParms):
     result['grid'] = finalGridString
     return result
 
-def errorCheck(uParms):
+def errorCheck(parms):
     requiredKeys = ['grid','score','integrity']
     error = {'status': 'ok'}
     for key in requiredKeys:
