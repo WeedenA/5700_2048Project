@@ -32,6 +32,3 @@ def merge(gameGrid):
     for i in range(15,3,-1):
         if gameGrid[i] == gameGrid[i-4]:
             
-
-def merge():
-    return 0
