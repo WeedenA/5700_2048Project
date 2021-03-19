@@ -7,18 +7,14 @@ def _shift(userParms):
     
     
     gameGridList = handleInputGrid(userParms)
-    print(gameGridList)
     mergedGrid = merge(gameGridList)
-    print(mergedGrid)
     collapsedGrid = collapse(mergedGrid)
-    print(collapsedGrid)
     finalGridString = ''.join(map(str, collapsedGrid))  
     result['grid'] = finalGridString
     return result
 
 def handleInputGrid(inputParms):
     inputGrid = [int(i) for i in inputParms['grid']]
-    print(inputGrid)
     return inputGrid
 
 def merge(gameGrid):
