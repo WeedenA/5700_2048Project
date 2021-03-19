@@ -7,6 +7,8 @@ def _shift(userParms):
     result['integrity'] = userParms['integrity']
     result['status'] = 'ok'
     
+    if 'direction' not in userParms:
+        userParms['direction'] = 'down'
     chosenDirection = userParms['direction']    
     gameGridList = handleInputGrid(userParms)
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
@@ -51,7 +53,6 @@ def flipDirection(gameGrid, direction, isReverse):
         finalGrid = gameGrid
     elif direction == allowedDirections[2]:
         if isReverse:
-            print(gameGrid)
             finalGrid = flipLeftRight(gameGrid)
             finalGrid = flipUpDown(finalGrid)
         else:
