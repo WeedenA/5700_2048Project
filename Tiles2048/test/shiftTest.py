@@ -57,4 +57,10 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-        
+    def test_shift_110SadNoScoreGiven(self):
+        expectedResult = {'status': 'error - missing keys'}
+        userParms = {'op': 'shift', 'grid': '2244224422442244', 'direction': 'right',
+                      'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
+         
