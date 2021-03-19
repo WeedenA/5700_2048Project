@@ -51,7 +51,7 @@ class CreateTest(unittest.TestCase):
         self.assertTrue(isValidGrid)
     def test_shift_050HappyRandomGridCombinesLeft(self):
         substring = '4000400040004000'
-        userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'right',
+        userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
         if substring not in actualResult:

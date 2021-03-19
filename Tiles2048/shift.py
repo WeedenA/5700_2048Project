@@ -9,12 +9,9 @@ def _shift(userParms):
     
     chosenDirection = userParms['direction']    
     gameGridList = handleInputGrid(userParms)
-    
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
-    mergedGrid = merge(orientedGrid)
-    collapsedGrid = collapse(mergedGrid)
-    finalGrid = flipDirection(collapsedGrid, chosenDirection, True)
-    print(finalGrid)
+    combinedGrid = combine(orientedGrid)
+    finalGrid = flipDirection(combinedGrid, chosenDirection, True)
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
     return result
@@ -33,8 +30,14 @@ def errorCheck(parms):
         error['status'] = 'error - invalid score'
         return True, error
         
-    
     return False, error
+def combine(grid):
+    collapsed = collapse(grid)
+    mergedGrid = merge(grid)
+    finalGrid = collapse(mergedGrid)
+    return finalGrid
+    
+
 def handleInputGrid(inputParms):
     inputGrid = [int(i) for i in inputParms['grid']]
     return inputGrid
@@ -47,12 +50,13 @@ def flipDirection(gameGrid, direction, isReverse):
     elif direction == allowedDirections[1]:
         finalGrid = gameGrid
     elif direction == allowedDirections[2]:
-        if not isReverse:
-            finalGrid = flipUpDown(gameGrid)
+        if isReverse:
+            print(gameGrid)
             finalGrid = flipLeftRight(gameGrid)
+            finalGrid = flipUpDown(finalGrid)
         else:
-            finalGrid = flipLeftRight(gameGrid)
             finalGrid = flipUpDown(gameGrid)
+            finalGrid = flipLeftRight(gameGrid)
     elif direction == allowedDirections[3]:
         finalGrid = flipLeftRight(gameGrid)
     else:
