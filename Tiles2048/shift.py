@@ -20,7 +20,7 @@ def _shift(userParms):
     return result
 
 def errorCheck(parms):
-    requiredKeys = ['grid','direction','score','integrity']
+    requiredKeys = ['grid','score','integrity']
     error = {'status': 'ok'}
     for key in requiredKeys:
         if key not in parms:
