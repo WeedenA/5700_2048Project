@@ -46,6 +46,5 @@ def digestHash(stringToHash):
 
 def buildGameGridString(gameGridList):
     gridString = ''
-    for value in gameGridList:
-        gridString += str(value)
+    gridString = gridString.join(map(str, gameGridList))
     return gridString
