@@ -1,4 +1,7 @@
 def _shift(userParms):
+    isCaught, error = errorCheck(userParms)
+    if isCaught:
+        return error
     result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
     result['score'] = userParms['score']
     result['integrity'] = userParms['integrity']
@@ -16,6 +19,15 @@ def _shift(userParms):
     result['grid'] = finalGridString
     return result
 
+def errorCheck(parms):
+    requiredKeys = ['grid','direction','score','integrity']
+    error = {'status': 'ok'}
+    for key in requiredKeys:
+        if key not in parms:
+            error['status'] = 'error - missing keys'
+            return True, error
+    
+    return False, error
 def handleInputGrid(inputParms):
     inputGrid = [int(i) for i in inputParms['grid']]
     return inputGrid
