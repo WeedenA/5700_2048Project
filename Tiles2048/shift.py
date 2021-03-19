@@ -4,18 +4,30 @@ def _shift(userParms):
     result['integrity'] = userParms['integrity']
     result['status'] = 'ok'
     
-    
-    
+    chosenDirection = userParms['direction']    
     gameGridList = handleInputGrid(userParms)
-    mergedGrid = merge(gameGridList)
+    orientedGrid = flipDirection(gameGridList, chosenDirection)
+    mergedGrid = merge(orientedGrid)
     collapsedGrid = collapse(mergedGrid)
-    finalGridString = ''.join(map(str, collapsedGrid))  
+    finalGrid = flipDirection(collapsedGrid, chosenDirection)
+    print(finalGrid)
+    finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
     return result
 
 def handleInputGrid(inputParms):
     inputGrid = [int(i) for i in inputParms['grid']]
     return inputGrid
+
+def flipDirection(gameGrid, direction):
+    allowedDirections = ['up','down','left','right']
+    flippedGrid = [0] * 16
+    if direction == allowedDirections[0]:
+        for i in range(16):
+            flippedGrid[i] = gameGrid[15-i]
+    else:
+        flippedGrid = gameGrid
+    return flippedGrid
 
 def merge(gameGrid):
     for i in range(15,3,-1):
