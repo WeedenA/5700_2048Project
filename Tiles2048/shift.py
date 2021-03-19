@@ -36,6 +36,6 @@ def collapse(gameGrid):
             tileAbove = i-4
             if gameGrid[i] == 0 and gameGrid[tileAbove] != 0:
                 gameGrid[i] = gameGrid[tileAbove]
-                gameGrid[tileAbove] = gameGrid
+                gameGrid[tileAbove] = 0
                 isDone = False
     return gameGrid
