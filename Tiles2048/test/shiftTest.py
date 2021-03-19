@@ -49,3 +49,12 @@ class CreateTest(unittest.TestCase):
         else: 
             isValidGrid = True
         self.assertTrue(isValidGrid)
+        
+    
+    def test_shift_110SadNoGridGiven(self):
+        expectedResult = {'status': 'error: no grid given'}
+        userParms = {'op': 'shift', 'direction': 'right',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
+        
