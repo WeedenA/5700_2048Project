@@ -20,7 +20,6 @@ def _shift(userParms):
     return result
 
 def errorCheck(uParms):
-    parms = dict(uParms)
     requiredKeys = ['grid','score','integrity']
     error = {'status': 'ok'}
     for key in requiredKeys:
