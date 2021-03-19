@@ -6,10 +6,11 @@ def _shift(userParms):
     
     chosenDirection = userParms['direction']    
     gameGridList = handleInputGrid(userParms)
-    orientedGrid = flipDirection(gameGridList, chosenDirection)
+    
+    orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     mergedGrid = merge(orientedGrid)
     collapsedGrid = collapse(mergedGrid)
-    finalGrid = flipDirection(collapsedGrid, chosenDirection)
+    finalGrid = flipDirection(collapsedGrid, chosenDirection, True)
     print(finalGrid)
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
@@ -19,15 +20,39 @@ def handleInputGrid(inputParms):
     inputGrid = [int(i) for i in inputParms['grid']]
     return inputGrid
 
-def flipDirection(gameGrid, direction):
+def flipDirection(gameGrid, direction, isReverse):
     allowedDirections = ['up','down','left','right']
-    flippedGrid = [0] * 16
+    finalGrid = [0]*16
     if direction == allowedDirections[0]:
-        for i in range(16):
-            flippedGrid[i] = gameGrid[15-i]
-    
+        finalGrid = flipUpDown(gameGrid)
+    elif direction == allowedDirections[1]:
+        finalGrid = gameGrid
+    elif direction == allowedDirections[2]:
+        if not isReverse:
+            finalGrid = flipUpDown(gameGrid)
+            finalGrid = flipLeftRight(gameGrid)
+        else:
+            finalGrid = flipLeftRight(gameGrid)
+            finalGrid = flipUpDown(gameGrid)
+    elif direction == allowedDirections[3]:
+        finalGrid = flipLeftRight(gameGrid)
     else:
-        flippedGrid = gameGrid
+        finalGrid = gameGrid
+    return finalGrid
+
+def flipUpDown(gameGrid):
+    flippedGrid = [0] * 16
+    for i in range(16):
+        flippedGrid[i] = gameGrid[15-i]
+    return flippedGrid
+
+def flipLeftRight(gameGrid):
+    flippedGrid = [0] * 16
+    x = 0
+    for i in range(4):
+        for j in range(0,13,4):
+            flippedGrid[x] = gameGrid[i+j]
+            x += 1
     return flippedGrid
 
 def merge(gameGrid):
