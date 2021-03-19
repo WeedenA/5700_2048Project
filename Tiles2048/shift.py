@@ -19,7 +19,7 @@ def _shift(userParms):
     
     
     
-    return inputGrid
+    return mergedGrid
 
 def handleInputGrid(inputParms):
     inputGrid = []
@@ -31,4 +31,6 @@ def handleInputGrid(inputParms):
 def merge(gameGrid):
     for i in range(15,3,-1):
         if gameGrid[i] == gameGrid[i-4]:
-            pass
+            gameGrid[i] *= 2
+            gameGrid[i-4] = 0
+    return gameGrid 
