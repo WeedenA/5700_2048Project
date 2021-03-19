@@ -9,7 +9,7 @@ import hashlib
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
     
-    result['score'] = 0
+    result['score'] = '0'
     result['status'] = 'ok'
     
     gameGrid = establishBoard()

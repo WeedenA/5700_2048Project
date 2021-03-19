@@ -59,9 +59,9 @@ class CreateTest(unittest.TestCase):
     def test_create_400IntegrityIsValid(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        hash = actualResult['grid'] + '.' + str(actualResult['score'])
+        hashScore = actualResult['grid'] + '.' + str(actualResult['score'])
         myHash = hashlib.sha256()
-        myHash.update(hash.encode())
+        myHash.update(hashScore.encode())
         expectedResult = myHash.hexdigest().upper()
         self.assertEqual(expectedResult, actualResult['Integrity'])
         
