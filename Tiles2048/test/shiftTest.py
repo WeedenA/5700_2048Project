@@ -18,7 +18,7 @@ class CreateTest(unittest.TestCase):
         actualResult = actualResult['grid']
         if substrin not in actualResult:
             actualResult = False
-        else 
+        else: 
             actualResult = True
         self.assertEqual(expectedResult, actualResult)
     
