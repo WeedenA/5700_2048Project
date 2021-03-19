@@ -1,3 +1,3 @@
 def _shift(userParms):
-    result = {'shift': 'shift stub'}
+    result = userParms
     return result
