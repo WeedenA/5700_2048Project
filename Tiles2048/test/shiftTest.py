@@ -16,7 +16,7 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         actualResult = actualResult['grid']
-        if substrin not in actualResult:
+        if substring not in actualResult:
             actualResult = False
         else: 
             actualResult = True
