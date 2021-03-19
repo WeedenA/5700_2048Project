@@ -11,7 +11,7 @@ def _shift(userParms):
         userParms['direction'] = 'down'
     chosenDirection = userParms['direction']
         
-    gameGridList = handleInputGrid(userParms)
+    gameGridList = handleInputGrid(userParms['grid'])
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     combinedGrid = combine(orientedGrid)
     finalGrid = flipDirection(combinedGrid, chosenDirection, True) 
@@ -42,8 +42,65 @@ def combine(grid):
     return grid
     
 
-def handleInputGrid(inputParms):
-    inputGrid = [int(i) for i in inputParms['grid']]
+def handleInputGrid(grid):
+    x = 0
+    inputGrid = [0] * 16
+    #todo: dear god figure something out for this
+    for i in range(16):
+        if grid[x] == '0':
+            inputGrid[i] = 0
+            x += 1
+            continue
+        if grid[x] == '1':
+            if grid[x:x+4] == '1024':
+                inputGrid[i] = 1024
+                x+=4
+                continue
+            elif grid[x:x+3] == '128':
+                inputGrid[i] == 128
+                x+=3
+                continue
+            elif grid[x:x+2] == '16':
+                inputGrid[i] = 16
+                x+=2
+                continue
+#             else return FALSE #skip out cuz something's bad
+        if grid[x] == '2':
+            if grid[x:x+3] == '256':
+                inputGrid[i] = 256
+                x+=2
+                continue
+            else: 
+                inputGrid[i] = 2
+                x+=1
+                continue
+        if grid[x] == '4':
+            inputGrid[i] = 4
+            x+=1
+            continue
+        if grid[x] == '8':
+            inputGrid[i] = 8
+            x+=1
+            continue
+        if grid[x:x+2] == '32':
+            inputGrid[i] = 32
+            x+=2
+            continue
+        if grid[x:x+2] == '64':
+            inputGrid[i] = 64
+            x+=2
+            continue
+        if grid[x:x+3] == '512':
+            inputGrid[i] = 512
+            x+=2
+            continue
+            
+            
+        
+        
+    
+    
+    print(inputGrid)
     return inputGrid
 
 def flipDirection(gameGrid, direction, isReverse):
