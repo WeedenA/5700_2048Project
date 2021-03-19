@@ -69,4 +69,10 @@ class CreateTest(unittest.TestCase):
                       'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_140SadInvalidScore(self):
+        expectedResult = {'status': 'error - invalid score'}
+        userParms = {'op': 'shift', 'grid': '0044224422442244', 'score': '59', 'direction': 'right',
+                      'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
          

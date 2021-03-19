@@ -29,6 +29,9 @@ def errorCheck(parms):
         if '0' not in parms['grid']:
             error['status'] = 'error - invalid grid'
             return True, error
+        if int(parms['score']) % 2 != 0:
+            error['status'] = 'error - invalid score'
+            
         
     
     return False, error
