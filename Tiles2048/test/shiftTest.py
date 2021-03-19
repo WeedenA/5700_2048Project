@@ -14,5 +14,5 @@ class CreateTest(unittest.TestCase):
         userParms = {'op': 'shift', 'grid': '0000200002000000', 'direction': 'down',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
-        self.assertIsEqual(expectedResult, actualResult)
+        self.assertEqual(expectedResult, actualResult)
     
