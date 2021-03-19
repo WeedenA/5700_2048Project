@@ -20,8 +20,8 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_020HappyRandomGridCombinesDown(self):
-        substring = '44448888'
-        userParms = {'op': 'shift', 'grid': '2222222244444444', 'direction': 'down',
+        substring = '44408880'
+        userParms = {'op': 'shift', 'grid': '2220222044404440', 'direction': 'down',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
         if substring not in actualResult:
@@ -30,8 +30,8 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_030HappyRandomGridCombinesUp(self):
-        substring = '4444888800000000'
-        userParms = {'op': 'shift', 'grid': '2222222244444444', 'direction': 'up',
+        substring = '444088800000000'
+        userParms = {'op': 'shift', 'grid': '0222022244444444', 'direction': 'up',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
         if substring not in actualResult:
@@ -40,8 +40,8 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_040HappyRandomGridCombinesRight(self):
-        substring = '0048004800480048'
-        userParms = {'op': 'shift', 'grid': '2244224422442244', 'direction': 'right',
+        substring = '0000004800480048'
+        userParms = {'op': 'shift', 'grid': '0000224422442244', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
         if substring not in actualResult:
@@ -58,7 +58,7 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
     def test_shift_110SadNoScoreGiven(self):
-        expectedResult = {'status': 'error - missing keys'}
+        expectedResult = {'status': 'error - invalid grid'}
         userParms = {'op': 'shift', 'grid': '2244224422442244', 'direction': 'right',
                       'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
