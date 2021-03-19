@@ -4,6 +4,7 @@ def _shift(userParms):
     gameGridList = handleInputGrid(userParms)
     
     mergedGrid = merge(gameGridList)
+    collapsedGrid = collapse(mergedGrid)
     
     
 #     
@@ -19,7 +20,7 @@ def _shift(userParms):
     
     
     
-    return mergedGrid
+    return collapsedGrid
 
 def handleInputGrid(inputParms):
     inputGrid = []
@@ -34,3 +35,9 @@ def merge(gameGrid):
             gameGrid[i] *= 2
             gameGrid[i-4] = 0
     return gameGrid 
+
+def collapse(gameGrid):
+    for i in range(15,3,-1):
+        if gameGrid[i] == 0 and gameGrid[i-4] != 0:
+            gameGrid[i] = gameGrid[i-4]
+            gameGrid[i-4] = gameGrid
