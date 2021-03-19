@@ -11,7 +11,10 @@ def _shift(userParms):
         userParms['direction'] = 'down'
     chosenDirection = userParms['direction']
         
-    gameGridList = handleInputGrid(userParms['grid'])
+    gameGridList, isErrorFound = handleInputGrid(userParms['grid'])
+    if isErrorFound:
+        return {'error': 'invalid grid'}
+    
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     combinedGrid = combine(orientedGrid)
     finalGrid = flipDirection(combinedGrid, chosenDirection, True) 
@@ -28,7 +31,7 @@ def errorCheck(parms):
             error['status'] = 'error - missing keys'
             return True, error
     if '0' not in parms['grid']:
-        error['status'] = 'error - invalid grid'
+        error['status'] = 'error - no moves available'
         return True, error
     if int(parms['score']) % 2 != 0:
         error['status'] = 'error - invalid score'
@@ -51,7 +54,7 @@ def handleInputGrid(grid):
             inputGrid[i] = 0
             x += 1
             continue
-        if grid[x] == '1':
+        elif grid[x] == '1':
             if grid[x:x+4] == '1024':
                 inputGrid[i] = 1024
                 x+=4
@@ -64,8 +67,9 @@ def handleInputGrid(grid):
                 inputGrid[i] = 16
                 x+=2
                 continue
-#             else return FALSE #skip out cuz something's bad
-        if grid[x] == '2':
+            else:
+                return inputGrid, True
+        elif grid[x] == '2':
             if grid[x:x+3] == '256':
                 inputGrid[i] = 256
                 x+=2
@@ -74,34 +78,29 @@ def handleInputGrid(grid):
                 inputGrid[i] = 2
                 x+=1
                 continue
-        if grid[x] == '4':
+        elif grid[x] == '4':
             inputGrid[i] = 4
             x+=1
             continue
-        if grid[x] == '8':
+        elif grid[x] == '8':
             inputGrid[i] = 8
             x+=1
             continue
-        if grid[x:x+2] == '32':
+        elif grid[x:x+2] == '32':
             inputGrid[i] = 32
             x+=2
             continue
-        if grid[x:x+2] == '64':
+        elif grid[x:x+2] == '64':
             inputGrid[i] = 64
             x+=2
             continue
-        if grid[x:x+3] == '512':
+        elif grid[x:x+3] == '512':
             inputGrid[i] = 512
             x+=2
             continue
-            
-            
-        
-        
-    
-    
-    print(inputGrid)
-    return inputGrid
+        else:
+            return inputGrid, True
+    return inputGrid, False
 
 def flipDirection(gameGrid, direction, isReverse):
     allowedDirections = ['up','down','left','right']
