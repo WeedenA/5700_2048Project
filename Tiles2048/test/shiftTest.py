@@ -52,7 +52,7 @@ class CreateTest(unittest.TestCase):
         
     
     def test_shift_110SadNoGridGiven(self):
-        expectedResult = {'status': 'error: no grid given'}
+        expectedResult = {'status': 'error - missing keys'}
         userParms = {'op': 'shift', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
