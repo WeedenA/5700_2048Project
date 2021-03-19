@@ -8,15 +8,13 @@ import random
 import hashlib
 def _create(userParms):
     result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
-    startingScore = '0'
-    startingStatus = 'ok'
     
-    gameGridList = establishBoard()
-    gameGridString = buildGameGridString(gameGridList)
+    result['score'] = 0
+    result['status'] = 'ok'
+    
+    gameGrid = establishBoard()
+    gameGridString = buildGameGridString(gameGrid)
     result['grid'] = gameGridString
-    
-    result['score'] = startingScore
-    result['status'] = startingStatus
     
     stringToHash = gameGridString + '.' + str(result['score'])
     integrity = digestHash(stringToHash)
