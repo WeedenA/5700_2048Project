@@ -32,10 +32,10 @@ def errorCheck(parms):
         
     return False, error
 def combine(grid):
-    collapsed = collapse(grid)
-    mergedGrid = merge(grid)
-    finalGrid = collapse(mergedGrid)
-    return finalGrid
+    collapse(grid)
+    merge(grid)
+    collapse(grid)
+    return grid
     
 
 def handleInputGrid(inputParms):
