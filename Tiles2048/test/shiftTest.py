@@ -69,6 +69,19 @@ class CreateTest(unittest.TestCase):
         else: 
             isValidGrid = True
         self.assertTrue(isValidGrid)    
+    def test_shift_070HappyStartingGridBiggerNumbers(self):
+        substring = '000000000320003200'
+        userParms = {'op': 'shift', 'grid': '01600016000160001600', 'direction': 'down',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)['grid']
+        if substring not in actualResult:
+            isValidGrid = False
+        else: 
+            isValidGrid = True
+        self.assertTrue(isValidGrid)
+    
+    
+    
     
     def test_shift_110SadNoGridGiven(self):
         expectedResult = {'status': 'error - missing keys'}

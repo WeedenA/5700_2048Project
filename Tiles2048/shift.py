@@ -9,11 +9,13 @@ def _shift(userParms):
     
     if 'direction' not in userParms:
         userParms['direction'] = 'down'
-    chosenDirection = userParms['direction']    
+    chosenDirection = userParms['direction']
+        
     gameGridList = handleInputGrid(userParms)
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     combinedGrid = combine(orientedGrid)
-    finalGrid = flipDirection(combinedGrid, chosenDirection, True)
+    finalGrid = flipDirection(combinedGrid, chosenDirection, True) 
+    
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
     return result
