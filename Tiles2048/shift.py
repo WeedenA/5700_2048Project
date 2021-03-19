@@ -41,3 +41,4 @@ def collapse(gameGrid):
         if gameGrid[i] == 0 and gameGrid[i-4] != 0:
             gameGrid[i] = gameGrid[i-4]
             gameGrid[i-4] = gameGrid
+    return gameGrid
