@@ -26,12 +26,12 @@ def errorCheck(parms):
         if key not in parms:
             error['status'] = 'error - missing keys'
             return True, error
-        if '0' not in parms['grid']:
-            error['status'] = 'error - invalid grid'
-            return True, error
-        if int(parms['score']) % 2 != 0:
-            error['status'] = 'error - invalid score'
-            return True, error
+    if '0' not in parms['grid']:
+        error['status'] = 'error - invalid grid'
+        return True, error
+    if int(parms['score']) % 2 != 0:
+        error['status'] = 'error - invalid score'
+        return True, error
         
     
     return False, error
