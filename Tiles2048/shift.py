@@ -25,6 +25,7 @@ def flipDirection(gameGrid, direction):
     if direction == allowedDirections[0]:
         for i in range(16):
             flippedGrid[i] = gameGrid[15-i]
+    
     else:
         flippedGrid = gameGrid
     return flippedGrid
