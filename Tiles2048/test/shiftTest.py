@@ -85,7 +85,12 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['status']
         self.assertEqual(expectedResult, actualResult)
-    
+    def test_shift_090HappyLosingRound(self):
+        expectedResult = 'lose'
+        userParms = {'op': 'shift', 'grid': '22224444888816161616', 'direction': 'down',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)['status']
+        self.assertEqual(expectedResult, actualResult)
     
     
     def test_shift_110SadNoGridGiven(self):
