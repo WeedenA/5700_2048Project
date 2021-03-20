@@ -12,5 +12,8 @@ def assessRound(parms, grid):
         return 'lose'
     return 'ok'
 
+for x in range(4):
+    
+
 
 
