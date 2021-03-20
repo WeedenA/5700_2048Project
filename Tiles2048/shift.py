@@ -35,7 +35,7 @@ def _shift(userParms):
     result['status'] = status
     
     result['score'] = str(score)
-    
+    print(result)
     return result
 
 def errorCheck(parms):
