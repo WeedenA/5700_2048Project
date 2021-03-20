@@ -29,8 +29,8 @@ def _shift(userParms):
     
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
-
-    result['status'] = 'ok'
+    status = assessRound(result, finalGrid)
+    result['status'] = status
     return result
 
 def errorCheck(parms):
@@ -54,6 +54,12 @@ def combine(grid):
     collapse(grid)
     return grid
 
+def assessRound(parms, grid):
+    if 2048 in grid:
+        return 'win'
+    if 0 not in grid:
+        return 'lose'
+    return 'ok'
 
 
 def handleInputGrid(grid):

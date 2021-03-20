@@ -14,4 +14,3 @@ def assessRound(parms, grid):
 
 
 
-status = assessRound(result, finalGrid)
