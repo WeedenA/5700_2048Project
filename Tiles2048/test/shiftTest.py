@@ -145,4 +145,10 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_290InvalidDirectionGiven(self):
+        expectedResult = {'status': 'error - invalid direction'}
+        userParms = {'op': 'shift', 'grid': '0000000000000000', 'direction': 'toTheWindow',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
          

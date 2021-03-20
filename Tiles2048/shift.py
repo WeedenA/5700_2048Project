@@ -35,6 +35,7 @@ def _shift(userParms):
 
 def errorCheck(parms):
     requiredKeys = ['grid','score','integrity']
+    acceptedDirections = ['up','down','left','right']
     error = {'status': 'ok'}
     for key in requiredKeys:
         if key not in parms:
@@ -46,6 +47,7 @@ def errorCheck(parms):
     if int(parms['score']) % 2 != 0:
         error['status'] = 'error - invalid score'
         return True, error
+    
         
     return False, error
 def combine(grid):
