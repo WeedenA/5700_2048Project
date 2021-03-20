@@ -48,8 +48,13 @@ def combine(grid):
 def handleInputGrid(grid):
     x = 0
     inputGrid = [0] * 16
+    
     #todo: dear god figure something out for this
     for i in range(16):
+        try:
+            testIndex = grid[x]
+        except IndexError:
+            return grid, True
         if grid[x] == '0':
             inputGrid[i] = 0
             x += 1
