@@ -13,7 +13,7 @@ def _shift(userParms):
         
     gameGridList, isErrorFound = handleInputGrid(userParms['grid'])
     if isErrorFound:
-        return {'error': 'invalid grid'}
+        return {'status': 'error - invalid grid'}
     
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     combinedGrid = combine(orientedGrid)
