@@ -5,6 +5,7 @@ Created on Mar 19, 2021
 '''
 
 import random
+import hashlib
 
 def _shift(userParms):
     isCaught, error = errorCheck(userParms)
@@ -35,6 +36,11 @@ def _shift(userParms):
     result['status'] = status
     
     result['score'] = str(score)
+    
+    stringToHash = finalGridString + '.' + result['score']
+    integrity = digestHash(stringToHash)
+    result['integrity'] = integrity
+    
     print(result)
     return result
 
@@ -77,6 +83,11 @@ def assessRound(parms, grid):
         return 'lose'
     return 'ok'
 
+def digestHash(stringToHash):
+    myHash = hashlib.sha256()
+    myHash.update(stringToHash.encode())
+    integrityScore = myHash.hexdigest().upper()
+    return integrityScore
 
 def handleInputGrid(grid):
     x = 0
