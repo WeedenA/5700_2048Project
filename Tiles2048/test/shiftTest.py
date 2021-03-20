@@ -79,7 +79,12 @@ class CreateTest(unittest.TestCase):
         else: 
             isValidGrid = True
         self.assertTrue(isValidGrid)
-    
+    def test_shift_080HappyWinningRound(self):
+        expectedResult = 'win'
+        userParms = {'op': 'shift', 'grid': '0000000010240001024000', 'direction': 'down',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)['status']
+        self.assertEqual(expectedResult, actualResult)
     
     
     

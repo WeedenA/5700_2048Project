@@ -13,7 +13,6 @@ def _shift(userParms):
     result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
     result['score'] = userParms['score']
     result['integrity'] = userParms['integrity']
-    result['status'] = 'ok'
     
     if 'direction' not in userParms:
         userParms['direction'] = 'down'
@@ -30,6 +29,8 @@ def _shift(userParms):
     
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
+
+    result['status'] = 'ok'
     return result
 
 def errorCheck(parms):
@@ -52,7 +53,8 @@ def combine(grid):
     merge(grid)
     collapse(grid)
     return grid
-    
+
+
 
 def handleInputGrid(grid):
     x = 0
@@ -175,11 +177,12 @@ def collapse(gameGrid):
     return gameGrid
 
 def addTile(gameGrid):
-    indexOfEmptyTile = 0
+    indexOfTile = 0
     emptyTiles = []
     for tile in gameGrid:
         if tile == 0:
-            emptyTiles.append(indexOfEmptyTile)
+            emptyTiles.append(indexOfTile)
+        indexOfTile += 1
     newTileIndexChoice = random.choice(emptyTiles)
     newTileValue = random.choice([2,4])
     gameGrid[newTileIndexChoice] = newTileValue
