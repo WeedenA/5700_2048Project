@@ -20,7 +20,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_020HappyRandomGridCombinesDown(self):
-        substring = '44408880'
+        substring = '444'
         userParms = {'op': 'shift', 'grid': '2220222044404440', 'direction': 'down',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
@@ -30,7 +30,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_030HappyRandomGridCombinesUp(self):
-        substring = '444088800000000'
+        substring = '888'
         userParms = {'op': 'shift', 'grid': '0222022244444444', 'direction': 'up',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
@@ -40,7 +40,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_040HappyRandomGridCombinesRight(self):
-        substring = '0000004800480048'
+        substring = '4800'
         userParms = {'op': 'shift', 'grid': '0000224422442244', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
@@ -50,7 +50,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_050HappyRandomGridCombinesLeft(self):
-        substring = '4000400040004000'
+        substring = '40004000'
         userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
@@ -60,7 +60,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_060HappyDefaultDirection(self):
-        substring = '44408880'
+        substring = '888'
         userParms = {'op': 'shift', 'grid': '2220222044404440',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']
@@ -70,7 +70,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)    
     def test_shift_070HappyStartingGridBiggerNumbers(self):
-        substring = '000000000320003200'
+        substring = '32'
         userParms = {'op': 'shift', 'grid': '01600016000160001600', 'direction': 'down',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['grid']

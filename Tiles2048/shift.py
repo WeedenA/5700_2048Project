@@ -1,3 +1,11 @@
+'''
+Created on Mar 19, 2021
+
+@author: Alex Weeden
+'''
+
+import random
+
 def _shift(userParms):
     isCaught, error = errorCheck(userParms)
     if isCaught:
@@ -17,7 +25,8 @@ def _shift(userParms):
     
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
     combinedGrid = combine(orientedGrid)
-    finalGrid = flipDirection(combinedGrid, chosenDirection, True) 
+    finalGrid = flipDirection(combinedGrid, chosenDirection, True)
+    finalGrid = addTile(finalGrid) 
     
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
@@ -164,3 +173,15 @@ def collapse(gameGrid):
                 gameGrid[tileAbove] = 0
                 isDone = False
     return gameGrid
+
+def addTile(gameGrid):
+    indexOfEmptyTile = 0
+    emptyTiles = []
+    for tile in gameGrid:
+        if tile == 0:
+            emptyTiles.append(indexOfEmptyTile)
+    newTileIndexChoice = random.choice(emptyTiles)
+    newTileValue = random.choice([2,4])
+    gameGrid[newTileIndexChoice] = newTileValue
+    return gameGrid
+        
