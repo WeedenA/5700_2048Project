@@ -41,7 +41,6 @@ def _shift(userParms):
     integrity = digestHash(stringToHash)
     result['integrity'] = integrity
     
-    print(result)
     return result
 
 def errorCheck(parms):
