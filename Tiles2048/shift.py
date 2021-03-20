@@ -49,7 +49,9 @@ def errorCheck(parms):
     if '0' not in parms['grid']:
         error['status'] = 'error - no moves available'
         return True, error
-    
+    if len(parms['integrity']) != 64:
+        error['status'] = 'error - invalid integrity'
+        return True, error
     if int(parms['score']) % 2 != 0:
         error['status'] = 'error - invalid score'
         return True, error
