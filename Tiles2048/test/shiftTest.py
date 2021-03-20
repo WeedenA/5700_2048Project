@@ -113,4 +113,10 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_150GridTooLong(self):
+        expectedResult = {'status': 'error - invalid grid'}
+        userParms = {'op': 'shift', 'grid': '000000000000000000', 'direction': 'right',
+                     'score': '0', 'integrity': 'ASDHASHD'}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
          
