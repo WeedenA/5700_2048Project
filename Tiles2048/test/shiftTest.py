@@ -91,45 +91,55 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)['status']
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_100ExtraneousParmsGiven(self):
+        substring = '40004000'
+        userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
+                     'score': '0', 'integrity': 'ASDHASHD', 'randomKey': 'randomValue'}
+        actualResult = shift._shift(userParms)['grid']
+        if substring not in actualResult:
+            isValidGrid = False
+        else: 
+            isValidGrid = True
+        self.assertTrue(isValidGrid)
     
     
-    def test_shift_110SadNoGridGiven(self):
+    def test_shift_210SadNoGridGiven(self):
         expectedResult = {'status': 'error - missing keys'}
         userParms = {'op': 'shift', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_120SadNoScoreGiven(self):
+    def test_shift_220SadNoScoreGiven(self):
         expectedResult = {'status': 'error - missing keys'}
         userParms = {'op': 'shift', 'grid': '0044224422442244', 'direction': 'right',
                      'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_130SadFullGrid(self):
+    def test_shift_230SadFullGrid(self):
         expectedResult = {'status': 'error - no moves available'}
         userParms = {'op': 'shift', 'grid': '2244224422442244', 'score': '0', 'direction': 'right',
                       'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_140SadInvalidScore(self):
+    def test_shift_240SadInvalidScore(self):
         expectedResult = {'status': 'error - invalid score'}
         userParms = {'op': 'shift', 'grid': '0044224422442244', 'score': '59', 'direction': 'right',
                       'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_150GridTooShort(self):
+    def test_shift_250GridTooShort(self):
         expectedResult = {'status': 'error - invalid grid'}
         userParms = {'op': 'shift', 'grid': '000222', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_160GridTooLong(self):
+    def test_shift_260GridTooLong(self):
         expectedResult = {'status': 'error - invalid grid'}
         userParms = {'op': 'shift', 'grid': '000000000000000000', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-    def test_shift_180InvalidNumbersInGrid(self):
+    def test_shift_280InvalidNumbersInGrid(self):
         expectedResult = {'status': 'error - invalid grid'}
         userParms = {'op': 'shift', 'grid': '7245000000000000', 'direction': 'right',
                      'score': '0', 'integrity': 'ASDHASHD'}
