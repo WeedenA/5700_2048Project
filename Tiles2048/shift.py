@@ -11,6 +11,7 @@ def _shift(userParms):
     if isCaught:
         return error
     result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
+    
     score = int(userParms['score'])
     result['integrity'] = userParms['integrity']
     
@@ -23,7 +24,7 @@ def _shift(userParms):
         return {'status': 'error - invalid grid'}
     
     orientedGrid = flipDirection(gameGridList, chosenDirection, False)
-    combinedGrid = combine(orientedGrid, score)
+    combinedGrid, score = combine(orientedGrid, score)
     finalGrid = flipDirection(combinedGrid, chosenDirection, True)
     finalGrid = addTile(finalGrid) 
     
@@ -33,6 +34,7 @@ def _shift(userParms):
     status = assessRound(result, finalGrid)
     result['status'] = status
     
+    result['score'] = str(score)
     
     return result
 
@@ -61,9 +63,9 @@ def errorCheck(parms):
     return False, error
 def combine(grid, score):
     collapse(grid)
-    merge(grid)
+    grid, score = merge(grid,score)
     collapse(grid)
-    return grid
+    return grid, score
 
 def assessRound(parms, grid):
     if 2048 in grid:
@@ -174,12 +176,13 @@ def flipLeftRight(gameGrid):
             x += 1
     return flippedGrid
 
-def merge(gameGrid):
+def merge(gameGrid,score):
     for i in range(15,3,-1):
         if gameGrid[i] == gameGrid[i-4]:
             gameGrid[i] *= 2
+            score += gameGrid[i]
             gameGrid[i-4] = 0
-    return gameGrid 
+    return gameGrid, score 
 
 def collapse(gameGrid):  
     isDone = False
