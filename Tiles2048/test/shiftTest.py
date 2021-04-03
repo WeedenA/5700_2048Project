@@ -5,7 +5,7 @@ Created on Mar 19, 2021
 '''
 import unittest
 import Tiles2048.shift as shift
-from pickle import FALSE
+
 
 INTEGRITY = '1FE1E3C4A3BB3616AFE46B941941D629F7C53F78F3336FEB311F64DF7747C672'
 class CreateTest(unittest.TestCase):

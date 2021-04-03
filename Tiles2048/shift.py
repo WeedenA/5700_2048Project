@@ -21,15 +21,15 @@ def _shift(userParms):
         userParms['direction'] = 'down'
     chosenDirection = userParms['direction']
         
-    gameGridList, isGridInvalid = handleInputGrid(userParms['grid'])
+    gameGridList, isGridInvalid = parseGrid(userParms['grid'])
     if isGridInvalid:
         return {'status': 'error - invalid grid'}
     
-    orientedGrid = flipDispatch(gameGridList, chosenDirection)
-    combinedGrid, score = combine(orientedGrid, score)
+    orientedGrid = flipBoard(gameGridList, chosenDirection)
+    combinedGrid, score = combineTiles(orientedGrid, score)
     result['score'] = str(score)
     
-    finalGrid = flipDispatch(combinedGrid, chosenDirection)
+    finalGrid = flipBoard(combinedGrid, chosenDirection)
     finalGrid = addTile(finalGrid) 
     
     finalGridString = ''.join(map(str, finalGrid))  
@@ -39,7 +39,7 @@ def _shift(userParms):
     result['status'] = status
     
     stringToHash = finalGridString + '.' + result['score']
-    integrity = digestHash(stringToHash)
+    integrity = genIntegrity(stringToHash)
     result['integrity'] = integrity
     
     return result
@@ -70,7 +70,7 @@ def checkKeys(parms):
         return True, error
         
     return False, error
-def combine(grid, score):
+def combineTiles(grid, score):
     collapseTiles(grid)
     grid, score = mergeTiles(grid,score)
     collapseTiles(grid)
@@ -83,13 +83,13 @@ def assessRound(parms, grid):
         return 'lose'
     return 'ok'
 
-def digestHash(stringToHash):
+def genIntegrity(stringToHash):
     myHash = hashlib.sha256()
     myHash.update(stringToHash.encode())
     integrityScore = myHash.hexdigest().upper()
     return integrityScore
 
-def handleInputGrid(grid):
+def parseGrid(grid):
     parseIndex = 0
     inputGrid = [0] * 16
     
@@ -117,7 +117,7 @@ def handleInputGrid(grid):
     return inputGrid, True
 
 
-def flipDispatch(gameGrid, direction):
+def flipBoard(gameGrid, direction):
     finalGrid = [0]*16
     if direction == 'up':
         finalGrid = flipVertical(gameGrid)

@@ -19,7 +19,7 @@ def _create(userParms):
     result['grid'] = gameGridString
     
     stringToHash = gameGridString + '.' + str(result['score'])
-    integrity = digestHash(stringToHash)
+    integrity = genIntegrity(stringToHash)
     result['integrity'] = integrity
     
     return result
@@ -40,7 +40,7 @@ def establishBoard():
     
     return gameGridList
 
-def digestHash(stringToHash):
+def genIntegrity(stringToHash):
     myHash = hashlib.sha256()
     myHash.update(stringToHash.encode())
     integrityScore = myHash.hexdigest().upper()

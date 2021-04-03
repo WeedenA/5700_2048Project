@@ -16,7 +16,7 @@ for x in range(4):
     
 
 
-def handleInputGrid(grid):
+def parseGrid(grid):
     parseIndex = 0
     inputGrid = [0] * 16
     
@@ -48,7 +48,7 @@ def handleInputGrid(grid):
 
 
 
-def handleInputGrid(grid):
+def parseGrid(grid):
     parseIndex = 0
     inputGrid = [0] * 16
     
