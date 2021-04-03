@@ -8,6 +8,17 @@ import Tiles2048.shift as shift
 
 
 INTEGRITY = '1FE1E3C4A3BB3616AFE46B941941D629F7C53F78F3336FEB311F64DF7747C672'
+
+def compareGrids(grid, expectedGrid):
+    if (len(grid) != len(expectedGrid)):
+        return False
+    diff = 0
+    for charIndex in range(len(grid)):
+        if grid[charIndex] != expectedGrid[charIndex]:
+            if ((diff+=1) > 1):
+                return False
+    return True
+    
 class CreateTest(unittest.TestCase):
     def test_shift_010HappyStartingGridNoCombinesDown(self):
         substring = '22'
@@ -38,6 +49,7 @@ class CreateTest(unittest.TestCase):
             isValidGrid = False
         else: 
             isValidGrid = True
+            
         self.assertTrue(isValidGrid)
     def test_shift_040HappyRandomGridCombinesRight(self):
         substring = '4800'
