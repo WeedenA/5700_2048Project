@@ -122,7 +122,7 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
     def test_shift_230SadFullGrid(self):
-        expectedResult = {'status': 'error - no moves available'}
+        expectedResult = {'status': 'error - no shift possible'}
         userParms = {'op': 'shift', 'grid': '2244224422442244', 'score': '0', 'direction': 'right',
                       'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)
