@@ -13,7 +13,9 @@ def _create(userParms):
     result['status'] = 'ok'
     
     gameGrid = establishBoard()
-    gameGridString = buildGameGridString(gameGrid)
+    gameGridString = ''
+    gameGridString = gameGridString.join(map(str, gameGrid))
+    
     result['grid'] = gameGridString
     
     stringToHash = gameGridString + '.' + str(result['score'])
@@ -43,8 +45,3 @@ def digestHash(stringToHash):
     myHash.update(stringToHash.encode())
     integrityScore = myHash.hexdigest().upper()
     return integrityScore
-
-def buildGameGridString(gameGridList):
-    gridString = ''
-    gridString = gridString.join(map(str, gameGridList))
-    return gridString
