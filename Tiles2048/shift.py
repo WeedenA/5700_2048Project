@@ -149,7 +149,7 @@ def handleInputGrid(grid):
         else:
             return inputGrid, True
     try:
-        testIndex = grid[x]
+        grid[x]
     except IndexError:
         return inputGrid, False
     return inputGrid, True
