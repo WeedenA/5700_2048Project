@@ -109,6 +109,12 @@ def handleInputGrid(grid):
                     inputGrid[tile] = value
                     parseIndex += len(strValue)
                     continue
+            return grid, True
+    try:
+        grid[parseIndex]
+    except IndexError:
+        return inputGrid, False
+    return inputGrid, True
 
 def flipDirection(gameGrid, direction, isReverse):
     allowedDirections = ['up','down','left','right']
