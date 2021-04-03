@@ -24,9 +24,9 @@ def _shift(userParms):
     if isErrorFound:
         return {'status': 'error - invalid grid'}
     
-    orientedGrid = flipDirection(gameGridList, chosenDirection, False)
+    orientedGrid = flipDispatch(gameGridList, chosenDirection, False)
     combinedGrid, score = combine(orientedGrid, score)
-    finalGrid = flipDirection(combinedGrid, chosenDirection, True)
+    finalGrid = flipDispatch(combinedGrid, chosenDirection, True)
     finalGrid = addTile(finalGrid) 
     
     finalGridString = ''.join(map(str, finalGrid))  
@@ -116,33 +116,32 @@ def handleInputGrid(grid):
     return inputGrid, True
 
 
-def flipDirection(gameGrid, direction, isReverse):
-    allowedDirections = ['up','down','left','right']
+def flipDispatch(gameGrid, direction, isReverse):
     finalGrid = [0]*16
-    if direction == allowedDirections[0]:
-        finalGrid = flipUpDown(gameGrid)
-    elif direction == allowedDirections[1]:
+    if direction == 'up':
+        finalGrid = flipVertical(gameGrid)
+    elif direction == 'down':
         finalGrid = gameGrid
-    elif direction == allowedDirections[2]:
+    elif direction == 'left':
         if isReverse:
-            finalGrid = flipLeftRight(gameGrid)
-            finalGrid = flipUpDown(finalGrid)
+            finalGrid = flipHorizontal(gameGrid)
+            finalGrid = flipVertical(finalGrid)
         else:
-            finalGrid = flipUpDown(gameGrid)
-            finalGrid = flipLeftRight(gameGrid)
-    elif direction == allowedDirections[3]:
-        finalGrid = flipLeftRight(gameGrid)
+            finalGrid = flipVertical(gameGrid)
+            finalGrid = flipHorizontal(gameGrid)
+    elif direction == 'right':
+        finalGrid = flipHorizontal(gameGrid)
     else:
         finalGrid = gameGrid
     return finalGrid
 
-def flipUpDown(gameGrid):
+def flipVertical(gameGrid):
     flippedGrid = [0] * 16
     for i in range(16):
         flippedGrid[i] = gameGrid[15-i]
     return flippedGrid
 
-def flipLeftRight(gameGrid):
+def flipHorizontal(gameGrid):
     flippedGrid = [0] * 16
     x = 0
     for i in range(4):
