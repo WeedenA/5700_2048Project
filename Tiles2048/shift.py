@@ -95,7 +95,7 @@ def handleInputGrid(grid):
     #todo: dear god figure something out for this
     for i in range(16):
         try:
-            testIndex = grid[x]
+            grid[x]
         except IndexError:
             return grid, True
         if grid[x] == '0':
