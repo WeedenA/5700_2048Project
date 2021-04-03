@@ -35,7 +35,7 @@ def _shift(userParms):
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
     
-    status = assessRound(result, finalGrid)
+    status = assessRound(finalGrid)
     result['status'] = status
     
     stringToHash = finalGridString + '.' + result['score']
@@ -76,7 +76,7 @@ def combineTiles(grid, score):
     collapseTiles(grid)
     return grid, score
 
-def assessRound(parms, grid):
+def assessRound(grid):
     if 2048 in grid:
         return 'win'
     if 0 not in grid:
