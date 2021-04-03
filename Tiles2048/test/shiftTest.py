@@ -15,7 +15,8 @@ def compareGrids(grid, expectedGrid):
     diff = 0
     for charIndex in range(len(grid)):
         if grid[charIndex] != expectedGrid[charIndex]:
-            if ((diff+=1) > 1):
+            diff += 1
+            if (diff > 1):
                 return False
     return True
     
