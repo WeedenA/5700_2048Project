@@ -24,9 +24,9 @@ def _shift(userParms):
     if isErrorFound:
         return {'status': 'error - invalid grid'}
     
-    orientedGrid = flipDispatch(gameGridList, chosenDirection, False)
+    orientedGrid = flipDispatch(gameGridList, chosenDirection)
     combinedGrid, score = combine(orientedGrid, score)
-    finalGrid = flipDispatch(combinedGrid, chosenDirection, True)
+    finalGrid = flipDispatch(combinedGrid, chosenDirection)
     finalGrid = addTile(finalGrid) 
     
     finalGridString = ''.join(map(str, finalGrid))  
@@ -70,9 +70,9 @@ def errorCheck(parms):
         
     return False, error
 def combine(grid, score):
-    collapse(grid)
-    grid, score = merge(grid,score)
-    collapse(grid)
+    collapseTiles(grid)
+    grid, score = mergeTiles(grid,score)
+    collapseTiles(grid)
     return grid, score
 
 def assessRound(parms, grid):
@@ -116,7 +116,7 @@ def handleInputGrid(grid):
     return inputGrid, True
 
 
-def flipDispatch(gameGrid, direction, isReverse):
+def flipDispatch(gameGrid, direction):
     finalGrid = [0]*16
     if direction == 'up':
         finalGrid = flipVertical(gameGrid)
@@ -154,7 +154,7 @@ def flipLeft(gameGrid):
             x+=1
     return flippedGrid
 
-def merge(gameGrid,score):
+def mergeTiles(gameGrid,score):
     for i in range(15,3,-1):
         if gameGrid[i] == gameGrid[i-4]:
             gameGrid[i] *= 2
@@ -162,7 +162,7 @@ def merge(gameGrid,score):
             gameGrid[i-4] = 0
     return gameGrid, score 
 
-def collapse(gameGrid):  
+def collapseTiles(gameGrid):  
     isDone = False
     while(not isDone):
         isDone = True
