@@ -72,7 +72,11 @@ def checkKeys(parms):
     return False, error
 def combineTiles(grid, score):
     collapseTiles(grid)
-    grid, score = mergeTiles(grid,score)
+    for i in range(15,3,-1):
+        if grid[i] == grid[i-4]:
+            grid[i] *= 2
+            score += grid[i]
+            grid[i-4] = 0
     collapseTiles(grid)
     return grid, score
 
@@ -152,16 +156,9 @@ def flipLeft(gameGrid):
     for i in range(4):
         for j in range(0,13,4):
             flippedGrid[x] = gameGrid[15-(i+j)]
-            x+=1
+            x += 1
     return flippedGrid
 
-def mergeTiles(gameGrid,score):
-    for i in range(15,3,-1):
-        if gameGrid[i] == gameGrid[i-4]:
-            gameGrid[i] *= 2
-            score += gameGrid[i]
-            gameGrid[i-4] = 0
-    return gameGrid, score 
 
 def collapseTiles(gameGrid):  
     isDone = False
