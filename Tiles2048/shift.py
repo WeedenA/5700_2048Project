@@ -109,7 +109,7 @@ def handleInputGrid(grid):
                     inputGrid[tile] = value
                     parseIndex += len(strValue)
                     continue
-            return grid, True
+        return grid, True
     try:
         grid[parseIndex]
     except IndexError:

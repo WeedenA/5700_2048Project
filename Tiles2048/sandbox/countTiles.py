@@ -75,7 +75,7 @@ def handleInputGrid(grid):
         elif grid[parseIndex] == '2':
             if grid[parseIndex:parseIndex+3] == '256':
                 inputGrid[tile] = 256
-                parseIndex+=2
+                parseIndex+=3
                 continue
             else: 
                 inputGrid[tile] = 2
@@ -99,7 +99,7 @@ def handleInputGrid(grid):
             continue
         elif grid[parseIndex:parseIndex+3] == '512':
             inputGrid[tile] = 512
-            parseIndex+=2
+            parseIndex+=3
             continue
         else:
             return inputGrid, True
