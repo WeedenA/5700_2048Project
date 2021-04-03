@@ -29,42 +29,42 @@ class CreateTest(unittest.TestCase):
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_020HappyRandomGridCombinesDown(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '2220222044404440', 'direction': 'down',
+        expectedResult = '000000080032848648'
+        userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_030HappyRandomGridCombinesUp(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '0222022244444444', 'direction': 'up',
+        expectedResult = '483280064800080000'
+        userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'up',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_040HappyRandomGridCombinesRight(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '0000224422442244', 'direction': 'right',
+        expectedResult = '000400080032640888'
+        userParms = {'op': 'shift', 'grid': '02020440161632328448', 'direction': 'right',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_050HappyRandomGridCombinesLeft(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '4220020264161608844', 'direction': 'left',
+        expectedResult = '400080003264008880'
+        userParms = {'op': 'shift', 'grid': '02020440161632328448', 'direction': 'left',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_060HappyDefaultDirection(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '2220222044404440',
+        expectedResult = '000000080032848648'
+        userParms = {'op': 'shift', 'grid': '00168241640432420328',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)    
     def test_shift_070HappyStartingGridBiggerNumbers(self):
-        expectedResult = '0000000000000220'
+        expectedResult = '000000000320003200'
         userParms = {'op': 'shift', 'grid': '01600016000160001600', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
@@ -83,8 +83,8 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['status']
         self.assertEqual(expectedResult, actualResult)
     def test_shift_100ExtraneousParmsGiven(self):
-        expectedResult = '0000000000000220'
-        userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
+        expectedResult = '400080003264008880'
+        userParms = {'op': 'shift', 'grid': '02020440161632328448', 'direction': 'left',
                      'score': '0', 'integrity': INTEGRITY, 'randomKey': 'randomValue'}
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
