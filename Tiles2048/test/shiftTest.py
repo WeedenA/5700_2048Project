@@ -22,14 +22,11 @@ def compareGrids(grid, expectedGrid):
     
 class CreateTest(unittest.TestCase):
     def test_shift_010HappyStartingGridNoCombinesDown(self):
-        substring = '22'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '0220000000000000', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedGrid, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_020HappyRandomGridCombinesDown(self):
         substring = '444'
