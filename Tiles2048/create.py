@@ -7,7 +7,7 @@ Returns a dictionary representation of that grid
 import random
 import hashlib
 def _create(userParms):
-    result = dict.fromkeys(['grid', 'score', 'Integrity', 'status'])
+    result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
     
     result['score'] = '0'
     result['status'] = 'ok'
@@ -18,7 +18,7 @@ def _create(userParms):
     
     stringToHash = gameGridString + '.' + str(result['score'])
     integrity = digestHash(stringToHash)
-    result['Integrity'] = integrity
+    result['integrity'] = integrity
     
     return result
 
