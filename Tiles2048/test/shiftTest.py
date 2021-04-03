@@ -29,65 +29,46 @@ class CreateTest(unittest.TestCase):
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_020HappyRandomGridCombinesDown(self):
-        substring = '444'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '2220222044404440', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_030HappyRandomGridCombinesUp(self):
-        substring = '888'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '0222022244444444', 'direction': 'up',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
-            
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_040HappyRandomGridCombinesRight(self):
-        substring = '4800'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '0000224422442244', 'direction': 'right',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_050HappyRandomGridCombinesLeft(self):
-        substring = '6432'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '4220020264161608844', 'direction': 'left',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_060HappyDefaultDirection(self):
-        substring = '888'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '2220222044404440',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)    
     def test_shift_070HappyStartingGridBiggerNumbers(self):
-        substring = '32'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '01600016000160001600', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_080HappyWinningRound(self):
         expectedResult = 'win'
@@ -102,14 +83,11 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['status']
         self.assertEqual(expectedResult, actualResult)
     def test_shift_100ExtraneousParmsGiven(self):
-        substring = '40004000'
+        expectedResult = '0000000000000220'
         userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
                      'score': '0', 'integrity': INTEGRITY, 'randomKey': 'randomValue'}
         actualResult = shift._shift(userParms)['grid']
-        if substring not in actualResult:
-            isValidGrid = False
-        else: 
-            isValidGrid = True
+        isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
     def test_shift_110HappyScoreCalculated(self):
         expectedResult = '16'
