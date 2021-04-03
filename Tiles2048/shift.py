@@ -89,70 +89,26 @@ def digestHash(stringToHash):
     return integrityScore
 
 def handleInputGrid(grid):
-    x = 0
+    parseIndex = 0
     inputGrid = [0] * 16
     
-    #todo: dear god figure something out for this
-    for i in range(16):
+    for tile in range(16):
         try:
-            grid[x]
+            grid[parseIndex]
         except IndexError:
             return grid, True
-        if grid[x] == '0':
-            inputGrid[i] = 0
-            x += 1
-            continue
-        elif grid[x] == '1':
-            if grid[x:x+4] == '1024':
-                inputGrid[i] = 1024
-                x+=4
-                continue
-            elif grid[x:x+3] == '128':
-                inputGrid[i] == 128
-                x+=3
-                continue
-            elif grid[x:x+2] == '16':
-                inputGrid[i] = 16
-                x+=2
-                continue
-            else:
-                return inputGrid, True
-        elif grid[x] == '2':
-            if grid[x:x+3] == '256':
-                inputGrid[i] = 256
-                x+=2
-                continue
-            else: 
-                inputGrid[i] = 2
-                x+=1
-                continue
-        elif grid[x] == '4':
-            inputGrid[i] = 4
-            x+=1
-            continue
-        elif grid[x] == '8':
-            inputGrid[i] = 8
-            x+=1
-            continue
-        elif grid[x:x+2] == '32':
-            inputGrid[i] = 32
-            x+=2
-            continue
-        elif grid[x:x+2] == '64':
-            inputGrid[i] = 64
-            x+=2
-            continue
-        elif grid[x:x+3] == '512':
-            inputGrid[i] = 512
-            x+=2
+        if grid[parseIndex] == '0':
+            inputGrid[tile] = 0
+            parseIndex += 1
             continue
         else:
-            return inputGrid, True
-    try:
-        grid[x]
-    except IndexError:
-        return inputGrid, False
-    return inputGrid, True
+            for power in range(1,11): # Only need to check to 2^10 = 1024
+                value =  pow(2, power)
+                strValue = str(value)
+                if grid[parseIndex:parseIndex+len(strValue)] == strValue:
+                    inputGrid[tile] = value
+                    parseIndex += len(strValue)
+                    continue
 
 def flipDirection(gameGrid, direction, isReverse):
     allowedDirections = ['up','down','left','right']
