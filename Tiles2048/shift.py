@@ -8,11 +8,12 @@ import random
 import hashlib
 
 def _shift(userParms):
-    isCaught, error = errorCheck(userParms)
-    if isCaught:
+    isErrorFound, error = checkKeys(userParms)
+    if isErrorFound:
         return error
+       
     result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
-    
+
     score = int(userParms['score'])
     result['integrity'] = userParms['integrity']
     
@@ -20,12 +21,14 @@ def _shift(userParms):
         userParms['direction'] = 'down'
     chosenDirection = userParms['direction']
         
-    gameGridList, isErrorFound = handleInputGrid(userParms['grid'])
-    if isErrorFound:
+    gameGridList, isGridInvalid = handleInputGrid(userParms['grid'])
+    if isGridInvalid:
         return {'status': 'error - invalid grid'}
     
     orientedGrid = flipDispatch(gameGridList, chosenDirection)
     combinedGrid, score = combine(orientedGrid, score)
+    result['score'] = str(score)
+    
     finalGrid = flipDispatch(combinedGrid, chosenDirection)
     finalGrid = addTile(finalGrid) 
     
@@ -35,15 +38,13 @@ def _shift(userParms):
     status = assessRound(result, finalGrid)
     result['status'] = status
     
-    result['score'] = str(score)
-    
     stringToHash = finalGridString + '.' + result['score']
     integrity = digestHash(stringToHash)
     result['integrity'] = integrity
     
     return result
 
-def errorCheck(parms):
+def checkKeys(parms):
     requiredKeys = ['grid','score','integrity']
     acceptedDirections = ['up','down','left','right']
     error = {'status': 'ok'}
