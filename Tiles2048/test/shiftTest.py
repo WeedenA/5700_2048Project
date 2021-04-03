@@ -50,8 +50,8 @@ class CreateTest(unittest.TestCase):
             isValidGrid = True
         self.assertTrue(isValidGrid)
     def test_shift_050HappyRandomGridCombinesLeft(self):
-        substring = '40004000'
-        userParms = {'op': 'shift', 'grid': '2200202020022200', 'direction': 'left',
+        substring = '6432'
+        userParms = {'op': 'shift', 'grid': '4220020264161608844', 'direction': 'left',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['grid']
         if substring not in actualResult:
@@ -107,8 +107,8 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['score']
         self.assertEqual(expectedResult, actualResult)
-        
-    
+         
+     
     def test_shift_210SadNoGridGiven(self):
         expectedResult = {'status': 'error - missing keys'}
         userParms = {'op': 'shift', 'direction': 'right',
@@ -163,4 +163,4 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'RESPECTFINDOUTWHATITMEANSTOME'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
-         
+          
