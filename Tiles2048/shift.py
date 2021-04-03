@@ -52,7 +52,7 @@ def errorCheck(parms):
             error['status'] = 'error - missing keys'
             return True, error
     if '0' not in parms['grid']:
-        error['status'] = 'error - no moves available'
+        error['status'] = 'error - no shift possible'
         return True, error
     if len(parms['integrity']) != 64:
         error['status'] = 'error - invalid integrity'
