@@ -25,11 +25,8 @@ def _shift(userParms):
         return {'status': 'error - invalid grid'}
     
     orientedGrid = flipDispatch(gameGridList, chosenDirection, False)
-    print(orientedGrid)
     combinedGrid, score = combine(orientedGrid, score)
-    print(combinedGrid)
     finalGrid = flipDispatch(combinedGrid, chosenDirection, True)
-    print(finalGrid)
     finalGrid = addTile(finalGrid) 
     
     finalGridString = ''.join(map(str, finalGrid))  
@@ -128,7 +125,7 @@ def flipDispatch(gameGrid, direction, isReverse):
     elif direction == 'left':
         finalGrid = flipLeft(gameGrid)
     elif direction == 'right':
-        finalGrid = flipHorizontal(gameGrid)
+        finalGrid = flipRight(gameGrid)
     else:
         finalGrid = gameGrid
     return finalGrid
@@ -139,8 +136,8 @@ def flipVertical(gameGrid):
         flippedGrid[i] = gameGrid[15-i]
     return flippedGrid
 
-def flipHorizontal(gameGrid):
-    flippedGrid = [0] * 16
+def flipRight(gameGrid):
+    flippedGrid = [0] * 16    
     x = 0 # for x in range
     for i in range(4):
         for j in range(0,13,4):
