@@ -26,7 +26,7 @@ class CreateTest(unittest.TestCase):
     def test_create_040IntegrityKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
-        self.assertIsNotNone(actualResult['Integrity'])
+        self.assertIsNotNone(actualResult['integrity'])
     def test_create_050StatusKeyPresent(self):
         userParms = {'op': 'create'}
         actualResult = create._create(userParms)
@@ -63,5 +63,5 @@ class CreateTest(unittest.TestCase):
         myHash = hashlib.sha256()
         myHash.update(hashScore.encode())
         expectedResult = myHash.hexdigest().upper()
-        self.assertEqual(expectedResult, actualResult['Integrity'])
+        self.assertEqual(expectedResult, actualResult['integrity'])
         
