@@ -7,6 +7,8 @@ Created on Mar 19, 2021
 import random
 import hashlib
 import string
+from pickle import TRUE
+INTEGRITY = '1FE1E3C4A3BB3616AFE46B941941D629F7C53F78F3336FEB311F64DF7747C672'
 
 def _shift(userParms):
     isErrorFound, error = checkKeys(userParms)
@@ -100,11 +102,20 @@ def combineTiles(grid, score):
     return grid, score, isBoardFull
 
 def assessRound(grid):
+    directions = ['up','down','left','right']
     if 2048 in grid:
         return 'win'
     if 0 not in grid:
-        
-        return 'lose'
+        isMovePossible = False
+        for dir in directions:
+            if _shift('op': 'shift', 'grid': str(grid), 'direction': dir, 'score': '0', 
+                      'integrity': INTEGRITY)['status'] != 'error - no shift possible':
+                isMovePossible = TRUE
+                break
+        if isMovePossible:
+            return 'ok'
+        else:
+            return 'lose'
     return 'ok'
 
 def genIntegrity(stringToHash):
