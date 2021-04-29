@@ -27,7 +27,9 @@ def _shift(userParms):
         return {'status': 'error - invalid grid'}
     
     orientedGrid = flipBoard(gameGridList, chosenDirection)
-    combinedGrid, score = combineTiles(orientedGrid, score)
+    combinedGrid, score, isBoardFull = combineTiles(orientedGrid, score)
+    if isBoardFull:
+        return {'status' : 'error - no shift possible'}
     result['score'] = str(score)
     
     finalGrid = flipBoard(combinedGrid, chosenDirection)
@@ -53,9 +55,6 @@ def checkKeys(parms):
         if key not in parms:
             error['status'] = ('error - missing ' + key)
             return True, error
-    if '0' not in parms['grid']:
-        error['status'] = 'error - no shift possible'
-        return True, error
     if parms['score'] == '':
         error['status'] = 'error - missing score'
         return True, error
@@ -95,7 +94,9 @@ def combineTiles(grid, score):
             score += grid[i]
             grid[i-4] = 0
     collapseTiles(grid)
-    return grid, score
+    if 0 not in grid:
+        isBoardFull = True
+    return grid, score, isBoardFull
 
 def assessRound(grid):
     if 2048 in grid:
