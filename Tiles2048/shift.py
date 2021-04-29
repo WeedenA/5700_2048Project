@@ -73,6 +73,7 @@ def checkKeys(parms):
     if direct not in acceptedDirections:
         error['status'] = 'error - invalid direction'
         return True, error
+    
         
     return False, error
 def combineTiles(grid, score):
