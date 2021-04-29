@@ -108,8 +108,8 @@ def assessRound(grid):
     if 0 not in grid:
         isMovePossible = False
         for dir in directions:
-            if _shift('op': 'shift', 'grid': str(grid), 'direction': dir, 'score': '0', 
-                      'integrity': INTEGRITY)['status'] != 'error - no shift possible':
+            if _shift({'op': 'shift', 'grid': str(grid), 'direction': dir, 'score': '0', 
+                      'integrity': INTEGRITY})['status'] != 'error - no shift possible':
                 isMovePossible = TRUE
                 break
         if isMovePossible:
