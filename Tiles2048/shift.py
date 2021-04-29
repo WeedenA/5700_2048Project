@@ -68,6 +68,7 @@ def checkKeys(parms):
         return True, error
     if intScore < 0:
         error['status'] = 'error - out of bounds score'
+        return True, error
     try:
         direct = parms['direction'].lower()
     except KeyError:
