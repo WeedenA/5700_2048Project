@@ -62,6 +62,8 @@ def checkKeys(parms):
         error['status'] = 'error - invalid score'
         return True, error
     if not isinstance(parms['score'], int):
+        print(parms['score'])
+        print(isinstance(parms['score'], int))
         error['status'] = 'error - non-int score'
         return True, error
     try:
