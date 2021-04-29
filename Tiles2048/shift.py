@@ -61,6 +61,8 @@ def checkKeys(parms):
     if len(parms['integrity']) != 64:
         error['status'] = 'error - invalid integrity'
         return True, error
+    for character in parms['integrity']:
+        print(character)
     try:
         intScore = int(parms['score'])
     except ValueError:
