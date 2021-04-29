@@ -111,7 +111,7 @@ def assessRound(grid, gridString):
 #                       'integrity': INTEGRITY})['status'] != 'error - no shift possible':
             if 0 == 0:
                 return 'ok'
-        return 'no'
+        return 'lose'
     return 'ok'
 
 def genIntegrity(stringToHash):
