@@ -27,7 +27,8 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
-    def test_shift_020HappyRandomGridCombinesDown(self):
+    def test_
+    shift_020HappyRandomGridCombinesDown(self):
         expectedResult = '000000080032848648'
         userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
@@ -180,6 +181,12 @@ class CreateTest(unittest.TestCase):
         expectedResult = {'status': 'error - out of bounds score'}
         userParms = {'op': 'shift', 'grid': '0000000000000000', 'direction': 'down',
                      'score': '-50', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
+    def test_shift_301SadInvalidIntegrityGiven(self):
+        expectedResult = {'status': 'error - invalid integrity'}
+        userParms = {'op': 'shift', 'grid': '0000000000000000', 'direction': 'down',
+                     'score': '0', 'integrity': '1FE1E3C4A3BB3616AFE46B941941D629F7C53F78F3336FEB311F64DF7747Q672'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
           

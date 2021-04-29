@@ -63,8 +63,9 @@ def checkKeys(parms):
         error['status'] = 'error - invalid integrity'
         return True, error
     for character in parms['integrity']:
-        print(character)
-        print(set(string.hexdigits))
+        if character not in (set(string.hexdigits)):
+            error['status'] = 'error - invalid integrity'
+            return True, error
     try:
         intScore = int(parms['score'])
     except ValueError:
