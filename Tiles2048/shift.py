@@ -62,7 +62,7 @@ def checkKeys(parms):
         error['status'] = 'error - invalid score'
         return True, error
     try:
-        direct = parms['direction']
+        direct = parms['direction'].lower()
     except KeyError:
         return False, error
     if direct not in acceptedDirections:
@@ -84,6 +84,7 @@ def assessRound(grid):
     if 2048 in grid:
         return 'win'
     if 0 not in grid:
+        
         return 'lose'
     return 'ok'
 
