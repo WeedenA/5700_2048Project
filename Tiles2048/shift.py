@@ -63,7 +63,7 @@ def checkKeys(parms):
         return True, error
     if not isinstance(parms['score'], int):
         print(parms['score'])
-        print(isinstance(parms['score'], int))
+        print(type(parms['score']))
         error['status'] = 'error - non-int score'
         return True, error
     try:
