@@ -27,7 +27,7 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)
-    def test_
+    def test_shift_020HappyStartingGridCombinesDown(self):
     shift_020HappyRandomGridCombinesDown(self):
         expectedResult = '000000080032848648'
         userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'down',
