@@ -170,4 +170,10 @@ class CreateTest(unittest.TestCase):
                      'score': 'a', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_310SadOOBScoreGiven(self):
+        expectedResult = {'status': 'error - out of bounds score'}
+        userParms = {'op': 'shift', 'grid': '0000000000000000', 'direction': 'down',
+                     'score': '-50', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
           
