@@ -15,7 +15,7 @@ def _shift(userParms):
     result = dict.fromkeys(['grid', 'score', 'integrity', 'status'])
 
     score = int(userParms['score'])
-    result['integrity'] = userParms['integrity']
+    result['integrity'] = userParms['integrity'].lower()
     
     if 'direction' not in userParms or userParms['direction'].isEmpty():
         userParms['direction'] = 'down'
@@ -73,8 +73,7 @@ def checkKeys(parms):
     if direct not in acceptedDirections:
         error['status'] = 'error - invalid direction'
         return True, error
-    if direct.isEmpty():
-        error['status'] = 
+    
         
     return False, error
 def combineTiles(grid, score):
