@@ -87,6 +87,7 @@ def checkKeys(parms):
         
     return False, error
 def combineTiles(grid, score):
+    isBoardFull = False
     collapseTiles(grid)
     for i in range(15,3,-1):
         if grid[i] == grid[i-4]:
