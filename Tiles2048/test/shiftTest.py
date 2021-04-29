@@ -117,7 +117,7 @@ class CreateTest(unittest.TestCase):
         self.assertTrue(isValidGrid)
     def test_shift_120HappyFullGridAfterShiftAddButStillOKStatus(self):
         expectedResult = 'ok'
-        userParms = {'op': 'shift', 'grid': '24816232643264163264481632', 'direction': 'down',
+        userParms = {'op': 'shift', 'grid': '24816232643241632646481632', 'direction': 'down',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['status']
         self.assertEqual(expectedResult, actualResult)  
