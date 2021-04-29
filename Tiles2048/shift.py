@@ -40,7 +40,7 @@ def _shift(userParms):
     finalGridString = ''.join(map(str, finalGrid))  
     result['grid'] = finalGridString
     
-    status = assessRound(finalGrid)
+    status = assessRound(finalGrid, finalGridString)
     result['status'] = status
     
     stringToHash = finalGridString + '.' + result['score']
@@ -101,14 +101,14 @@ def combineTiles(grid, score):
         isBoardFull = True
     return grid, score, isBoardFull
 
-def assessRound(grid):
+def assessRound(grid, gridString):
     directions = ['up','down','left','right']
     if 2048 in grid:
         return 'win'
     if 0 not in grid:
         isMovePossible = False
         for dir in directions:
-            if _shift({'op': 'shift', 'grid': str(grid), 'direction': dir, 'score': '0', 
+            if _shift({'op': 'shift', 'grid': gridString, 'direction': dir, 'score': '0', 
                       'integrity': INTEGRITY})['status'] != 'error - no shift possible':
                 isMovePossible = True
                 break
