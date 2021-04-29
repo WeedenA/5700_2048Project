@@ -112,7 +112,7 @@ def assessRound(grid, gridString):
                       'integrity': INTEGRITY})['status'] != 'error - no shift possible':
                 isMovePossible = True
                 break
-        if !isMovePossible:
+        if not isMovePossible:
             return 'ok'
         else:
             return 'lose'
