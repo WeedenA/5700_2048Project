@@ -108,6 +108,13 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)['score']
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_120HappyFullGridButStillOKStatus(self):
+        expectedResult = '0000000044448888'
+        userParms = {'op': 'shift', 'grid': '2222222244444444', 'direction': 'down',
+                     'score': '0', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)['grid']
+        isValidGrid = compareGrids(expectedResult, actualResult)
+        self.assertTrue(isValidGrid)
          
      
     def test_shift_210SadNoGridGiven(self):
