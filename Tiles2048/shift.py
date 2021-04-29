@@ -61,6 +61,9 @@ def checkKeys(parms):
     if int(parms['score']) % 2 != 0:
         error['status'] = 'error - invalid score'
         return True, error
+    if not isinstance(parms['score'], int):
+        error['status'] = 'error - non-int score'
+        return True, error
     try:
         direct = parms['direction'].lower()
     except KeyError:
