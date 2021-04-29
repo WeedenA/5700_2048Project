@@ -55,6 +55,9 @@ def checkKeys(parms):
     if '0' not in parms['grid']:
         error['status'] = 'error - no shift possible'
         return True, error
+    if parms['score'] == '':
+        error['status'] = 'error - missing score'
+        return True, error
     if len(parms['integrity']) != 64:
         error['status'] = 'error - invalid integrity'
         return True, error

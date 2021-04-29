@@ -122,6 +122,12 @@ class CreateTest(unittest.TestCase):
                      'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_221SadEmptyScoreGiven(self):
+        expectedResult = {'status': 'error - missing score'}
+        userParms = {'op': 'shift', 'grid': '0044224422442244', 'direction': 'right',
+                     'score' = '','integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
     def test_shift_230SadNoMovesAvailable(self):
         expectedResult = {'status': 'error - no shift possible'}
         userParms = {'op': 'shift', 'grid': '2244224422442244', 'score': '0', 'direction': 'right',
