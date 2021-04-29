@@ -106,13 +106,12 @@ def assessRound(grid, gridString):
     if 2048 in grid:
         return 'win'
     if 0 not in grid:
-        isMovePossible = False
         for dir in directions:
 #             if _shift({'op': 'shift', 'grid': gridString, 'direction': dir, 'score': '0', 
 #                       'integrity': INTEGRITY})['status'] != 'error - no shift possible':
             if 0 == 0:
                 return 'ok'
-        return 'lose'
+        return 'no'
     return 'ok'
 
 def genIntegrity(stringToHash):
