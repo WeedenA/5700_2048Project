@@ -17,7 +17,7 @@ def _shift(userParms):
     score = int(userParms['score'])
     result['integrity'] = userParms['integrity'].lower()
     
-    if 'direction' not in userParms or userParms['direction'].isEmpty():
+    if 'direction' not in userParms or userParms['direction'] == '':
         userParms['direction'] = 'down'
     chosenDirection = userParms['direction']
         
