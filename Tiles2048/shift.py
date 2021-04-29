@@ -46,7 +46,7 @@ def _shift(userParms):
 
 def checkKeys(parms):
     requiredKeys = ['grid','score','integrity']
-    acceptedDirections = ['up','down','left','right']
+    acceptedDirections = ['up','down','left','right', '']
     error = {'status': 'ok'}
     for key in requiredKeys:
         if key not in parms:
