@@ -62,13 +62,13 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)  
-#     def test_shift_061HappyRandomGridNoDirectionChoice(self):
-#         expectedResult = '000000080032848648'
-#         userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': '',
-#                      'score': '0', 'integrity': INTEGRITY}
-#         actualResult = shift._shift(userParms)['grid']
-#         isValidGrid = compareGrids(expectedResult, actualResult)
-#         self.assertTrue(isValidGrid)  
+    def test_shift_061HappyRandomGridNoDirectionChoice(self):
+        expectedResult = '000000080032848648'
+        userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': '',
+                     'score': '0', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)['grid']
+        isValidGrid = compareGrids(expectedResult, actualResult)
+        self.assertTrue(isValidGrid)  
     def test_shift_062HappyRandomGridMixedDirectionChoice(self):
         expectedResult = '000000080032848648'
         userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'DoWn',
