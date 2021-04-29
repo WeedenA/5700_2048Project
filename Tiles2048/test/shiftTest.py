@@ -69,6 +69,13 @@ class CreateTest(unittest.TestCase):
         actualResult = shift._shift(userParms)['grid']
         isValidGrid = compareGrids(expectedResult, actualResult)
         self.assertTrue(isValidGrid)  
+    def test_shift_062HappyRandomGridMixedDirectionChoice(self):
+        expectedResult = '000000080032848648'
+        userParms = {'op': 'shift', 'grid': '00168241640432420328', 'direction': 'DoWn',
+                     'score': '0', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)['grid']
+        isValidGrid = compareGrids(expectedResult, actualResult)
+        self.assertTrue(isValidGrid)
     def test_shift_070HappyStartingGridBiggerNumbers(self):
         expectedResult = '000000000320003200'
         userParms = {'op': 'shift', 'grid': '01600016000160001600', 'direction': 'down',
