@@ -50,7 +50,7 @@ def checkKeys(parms):
     error = {'status': 'ok'}
     for key in requiredKeys:
         if key not in parms:
-            error['status'] = 'error - missing keys'
+            error['status'] = ('error - missing ' + key)
             return True, error
     if '0' not in parms['grid']:
         error['status'] = 'error - no shift possible'

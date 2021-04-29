@@ -97,13 +97,13 @@ class CreateTest(unittest.TestCase):
          
      
     def test_shift_210SadNoGridGiven(self):
-        expectedResult = {'status': 'error - missing keys'}
+        expectedResult = {'status': 'error - missing grid'}
         userParms = {'op': 'shift', 'direction': 'right',
                      'score': '0', 'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
     def test_shift_220SadNoScoreGiven(self):
-        expectedResult = {'status': 'error - missing keys'}
+        expectedResult = {'status': 'error - missing score'}
         userParms = {'op': 'shift', 'grid': '0044224422442244', 'direction': 'right',
                      'integrity': INTEGRITY}
         actualResult = shift._shift(userParms)
