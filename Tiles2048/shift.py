@@ -58,13 +58,13 @@ def checkKeys(parms):
     if len(parms['integrity']) != 64:
         error['status'] = 'error - invalid integrity'
         return True, error
+    try:
+        intScore = int(parms['score'])
+    except ValueError:
+        error['status'] = 'error - non-int score'
+        return True, error
     if int(parms['score']) % 2 != 0:
         error['status'] = 'error - invalid score'
-        return True, error
-    if not isinstance(parms['score'], int):
-        print(parms['score'])
-        print(type(parms['score']))
-        error['status'] = 'error - non-int score'
         return True, error
     try:
         direct = parms['direction'].lower()

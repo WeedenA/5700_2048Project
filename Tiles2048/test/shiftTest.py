@@ -150,4 +150,10 @@ class CreateTest(unittest.TestCase):
                      'score': '0', 'integrity': 'RESPECTFINDOUTWHATITMEANSTOME'}
         actualResult = shift._shift(userParms)
         self.assertEqual(expectedResult, actualResult)
+    def test_shift_310SadNonIntScoreGiven(self):
+        expectedResult = {'status': 'error - non-int score'}
+        userParms = {'op': 'shift', 'grid': '0000000000000000', 'direction': 'down',
+                     'score': 'a', 'integrity': INTEGRITY}
+        actualResult = shift._shift(userParms)
+        self.assertEqual(expectedResult, actualResult)
           
