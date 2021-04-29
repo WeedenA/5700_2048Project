@@ -109,7 +109,7 @@ def assessRound(grid, gridString):
         isMovePossible = False
         for dir in directions:
             if _shift({'op': 'shift', 'grid': gridString, 'direction': dir, 'score': '0', 
-                      'integrity': INTEGRITY})['status'] != 'error - no shift possible':
+                      'integrity': INTEGRITY})['status'] != 'error - no shift possibl':
                 isMovePossible = True
                 break
         if isMovePossible:
