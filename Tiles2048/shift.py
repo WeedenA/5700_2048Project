@@ -6,6 +6,7 @@ Created on Mar 19, 2021
 
 import random
 import hashlib
+import string
 
 def _shift(userParms):
     isErrorFound, error = checkKeys(userParms)
@@ -63,6 +64,7 @@ def checkKeys(parms):
         return True, error
     for character in parms['integrity']:
         print(character)
+        print(set(string.hexdigits))
     try:
         intScore = int(parms['score'])
     except ValueError:
